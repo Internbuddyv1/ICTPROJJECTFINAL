@@ -1,40 +1,27 @@
 /* ============================================
-   BACKEND CONFIG (FIXED)
+   BACKEND CONFIG — FINAL FIX
    ============================================ */
 
-// ✅ PUBLIC Railway backend URL
+// ✅ Railway backend (PUBLIC)
 const API_BASE = "https://ictprojjectfinal-production.up.railway.app";
 
 /* ============================================
-   SESSION, ROLES, PROGRESS & NAVIGATION LOGIC
+   SESSION HELPERS
    ============================================ */
+function setSession(user){
+  localStorage.setItem("tp_user", JSON.stringify(user));
+}
+function getSession(){
+  try { return JSON.parse(localStorage.getItem("tp_user")); }
+  catch { return null; }
+}
+function clearSession(){
+  localStorage.removeItem("tp_user");
+}
 
-const ORG_USERS = [
-  { id:"u_emp_001", email:"employee@demo.com", name:"John Doe", role:"employee", managerId:"u_mgr_001" },
-  { id:"u_mgr_001", email:"manager@demo.com", name:"Alicia Patel", role:"manager" },
-  { id:"u_hr_001",  email:"hr@demo.com", name:"Sara Ahmed", role:"hr" },
-  { id:"u_ind_001", email:"learner@demo.com", name:"Alex Jordan", role:"individual" }
-];
-
-const SCENARIOS = [
-  { id:"recruitment", title:"Recruitment Interview", durationMins:15, perspectives:3 },
-  { id:"first-day", title:"First Day", durationMins:10, perspectives:2 },
-  { id:"cross-cultural", title:"Cross Cultural", durationMins:10, perspectives:2 }
-];
-
-const ROLE_ROUTES = {
-  employee: "index.html",
-  manager: "manager-dashboard.html",
-  hr: "hr-dashboard.html",
-  individual: "dashboard-individual.html"
-};
-
-/* ========== SESSION HELPERS ========== */
-function setSession(user){ localStorage.setItem("tp_user", JSON.stringify(user)); }
-function getSession(){ try { return JSON.parse(localStorage.getItem("tp_user")); } catch { return null; } }
-function clearSession(){ localStorage.removeItem("tp_user"); }
-
-/* ========== API HELPERS (FIXED) ========== */
+/* ============================================
+   API HELPERS — FIXED
+   ============================================ */
 async function apiRequest(path, { method="GET", body=null } = {}){
   const res = await fetch(`${API_BASE}${path}`, {
     method,
@@ -51,107 +38,119 @@ async function apiRequest(path, { method="GET", body=null } = {}){
   return data;
 }
 
-const apiLogin = (p) => apiRequest("/api/login", { method:"POST", body:p });
-const apiRegister = (p) => apiRequest("/api/register", { method:"POST", body:p });
+const apiRegister = (payload) =>
+  apiRequest("/api/register", { method:"POST", body: payload });
 
-/* ========== CREATE ACCOUNT (INDIVIDUAL) ========== */
-function initCreateAccountIndividualPage(){
+const apiLogin = (payload) =>
+  apiRequest("/api/login", { method:"POST", body: payload });
+
+/* ============================================
+   CREATE ACCOUNT — INDIVIDUAL
+   ============================================ */
+function initCreateAccountIndividual(){
   const form = document.getElementById("soloCreateForm");
-  const msg = document.getElementById("soloCreateMessage");
+  const msg  = document.getElementById("soloCreateMessage");
   if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    try {
+    try{
       const fullName = document.getElementById("soloName").value.trim();
-      const email = document.getElementById("soloCreateEmail").value.trim();
+      const email    = document.getElementById("soloCreateEmail").value.trim();
       const password = document.getElementById("soloCreatePassword").value;
 
       await apiRegister({ email, password, fullName, role:"individual" });
       const user = await apiLogin({ email, password, role:"individual" });
-      setSession(user);
 
+      setSession(user);
       msg.style.color = "green";
       msg.textContent = "Account created. Redirecting…";
-      setTimeout(() => location.href = ROLE_ROUTES.individual, 300);
-    } catch(err){
+      setTimeout(() => location.href = "dashboard-individual.html", 300);
+    }catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ========== CREATE ACCOUNT (COMPANY) ========== */
-function initCreateAccountCompanyPage(){
+/* ============================================
+   CREATE ACCOUNT — COMPANY
+   ============================================ */
+function initCreateAccountCompany(){
   const form = document.getElementById("companyCreateForm");
-  const msg = document.getElementById("companyCreateMessage");
+  const msg  = document.getElementById("companyCreateMessage");
   if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    try {
+    try{
       const fullName = document.getElementById("companyFullName").value.trim();
-      const email = document.getElementById("companyCreateEmail").value.trim();
+      const email    = document.getElementById("companyCreateEmail").value.trim();
       const password = document.getElementById("companyCreatePassword").value;
-      const role = document.getElementById("companyRole").value;
+      const role     = document.getElementById("companyRole").value;
 
       await apiRegister({ email, password, fullName, role });
       const user = await apiLogin({ email, password, role });
-      setSession(user);
 
+      setSession(user);
       msg.style.color = "green";
       msg.textContent = "Account created. Redirecting…";
-      setTimeout(() => location.href = ROLE_ROUTES[user.role], 300);
-    } catch(err){
+      setTimeout(() => location.href = "index.html", 300);
+    }catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ========== LOGIN (COMPANY) ========== */
-function initCompanyLoginPage(){
+/* ============================================
+   LOGIN — COMPANY
+   ============================================ */
+function initCompanyLogin(){
   const form = document.getElementById("companyLoginForm");
-  const msg = document.getElementById("companyLoginMessage");
+  const msg  = document.getElementById("companyLoginMessage");
   if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    try {
+    try{
       const email = document.getElementById("companyEmail").value.trim();
       const password = document.getElementById("companyPassword").value;
-      const role = document.querySelector(".role-card.active")?.dataset.role || "employee";
+      const role =
+        document.querySelector(".role-card.active")?.dataset.role || "employee";
 
       const user = await apiLogin({ email, password, role });
       setSession(user);
 
       msg.style.color = "green";
       msg.textContent = "Login successful. Redirecting…";
-      setTimeout(() => location.href = ROLE_ROUTES[user.role], 300);
-    } catch(err){
+      setTimeout(() => location.href = "index.html", 300);
+    }catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ========== LOGIN (INDIVIDUAL) ========== */
-function initIndividualLoginPage(){
+/* ============================================
+   LOGIN — INDIVIDUAL
+   ============================================ */
+function initIndividualLogin(){
   const form = document.getElementById("individualLoginForm");
-  const msg = document.getElementById("individualLoginMessage");
+  const msg  = document.getElementById("individualLoginMessage");
   if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    try {
+    try{
       const email = document.getElementById("individualEmail").value.trim();
       const password = document.getElementById("individualPassword").value;
 
@@ -160,20 +159,22 @@ function initIndividualLoginPage(){
 
       msg.style.color = "green";
       msg.textContent = "Login successful. Redirecting…";
-      setTimeout(() => location.href = ROLE_ROUTES.individual, 300);
-    } catch(err){
+      setTimeout(() => location.href = "dashboard-individual.html", 300);
+    }catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ========== ROUTER ========== */
+/* ============================================
+   PAGE ROUTER
+   ============================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  switch(document.body.dataset.page){
-    case "create-account-individual": initCreateAccountIndividualPage(); break;
-    case "create-account-company": initCreateAccountCompanyPage(); break;
-    case "login-company": initCompanyLoginPage(); break;
-    case "login-individual": initIndividualLoginPage(); break;
-  }
+  const page = document.body.dataset.page;
+
+  if(page === "create-account-individual") initCreateAccountIndividual();
+  if(page === "create-account-company")    initCreateAccountCompany();
+  if(page === "login-company")             initCompanyLogin();
+  if(page === "login-individual")          initIndividualLogin();
 });

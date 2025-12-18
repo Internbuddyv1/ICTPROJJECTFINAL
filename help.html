@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Help & How To</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="help">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="app-shell">
+  <!-- HEADER -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo">TRADING PLACES</div>
+      <div class="top-bar-title">Help &amp; How To Use Trading Places</div>
+    </div>
+    <div class="top-bar-right">
+      <!-- Optional: show a simple nav back to login / dashboard -->
+      <a href="login.html" class="text-link">Back to login</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main" class="page-content" role="main">
+    <!-- OVERVIEW CARD -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Start here: What is Trading Places?</div>
+          <div class="card-subtitle">
+            Cultural-awareness learning through immersive simulation and reflection.
+          </div>
+        </div>
+      </div>
+
+      <p class="small-text mt-1">
+        Trading Places helps you explore how culture, bias, and power can shape everyday
+        workplace moments. You move through realistic scenarios, switch roles, and see how
+        different choices affect people in the scene.
+      </p>
+
+      <ul class="login-hero-points mt-1">
+        <li>Experience situations from multiple perspectives (employee, manager, HR, etc.).</li>
+        <li>Notice where assumptions or bias might appear in everyday decisions.</li>
+        <li>Reflect on how you can support more inclusive behaviours in real life.</li>
+      </ul>
+    </section>
+
+    <!-- HOW-TO CARD -->
+    <section class="card mt-3">
+      <div class="card-header">
+        <div class="card-title">How to use Trading Places</div>
+      </div>
+
+      <ol class="small-text" style="padding-left: 1.25rem; margin-top: 0.5rem;">
+        <li class="mt-1">
+          <strong>Onboarding</strong> – Set any accessibility or comfort preferences (for example
+          high-contrast mode or keyboard-first navigation).
+        </li>
+        <li class="mt-1">
+          <strong>Choose your login</strong> – If you are part of a company, use the organisation
+          login. If you are using Trading Places personally, use the individual login.
+        </li>
+        <li class="mt-1">
+          <strong>Pick a scenario</strong> – On your dashboard, choose a scenario tile and enter
+          the immersive VR-style experience.
+        </li>
+        <li class="mt-1">
+          <strong>Make your choices</strong> – Read the situation, then choose how you would
+          respond. Some interactions may feel like “hotspots” inside a scene.
+        </li>
+        <li class="mt-1">
+          <strong>Review and reflect</strong> – When you finish, review what happened and write
+          a short reflection. This supports learning, not performance scoring.
+        </li>
+      </ol>
+
+      <p class="small-text mt-2">
+        Remember: this environment uses mock data and is for learning only. It must not be used
+        to judge or assess real employees or to make HR decisions.
+      </p>
+    </section>
+
+    <!-- VIDEO HELP / TUTORIAL CARD -->
+    <section class="card mt-3">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Video tutorials &amp; walkthroughs</div>
+          <div class="card-subtitle">
+            Watch how to navigate the app, use VR-style scenarios, and understand your dashboard.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="align-items: flex-start; gap: 1.25rem;">
+        <!-- VIDEO PLAYER -->
+        <div>
+          <video id="helpVideoPlayer"
+                 controls
+                 style="width: 100%; border-radius: 0.75rem; border: var(--border-secondary); background: #000;">
+            <source id="helpVideoSource" src="" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p id="helpVideoCaption" class="small-text mt-1">
+            Select a tutorial on the right or upload your own training videos.
+          </p>
+        </div>
+
+        <!-- VIDEO LIST + UPLOAD -->
+        <div>
+          <div class="small-text"><strong>Available tutorials</strong></div>
+          <ul id="helpVideoList" class="sidebar-list">
+            <!-- Built-in placeholder topics (no actual file attached) -->
+            <li>
+              <button type="button"
+                      class="sidebar-list-item btn-ghost"
+                      data-video-placeholder="intro">
+                What is Trading Places? (Overview)
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="sidebar-list-item btn-ghost"
+                      data-video-placeholder="dashboard">
+                Navigating your dashboard
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="sidebar-list-item btn-ghost"
+                      data-video-placeholder="scenario">
+                Completing a VR-style scenario
+              </button>
+            </li>
+          </ul>
+
+          <div class="small-text mt-2"><strong>Your uploaded videos</strong></div>
+          <ul id="userVideoList" class="sidebar-list">
+            <li id="noUserVideos"><div class="sidebar-list-item">No videos uploaded yet.</div></li>
+          </ul>
+
+          <div class="footer-actions">
+            <button type="button" class="btn-small btn-secondary" id="uploadVideoBtn">
+              Upload tutorial videos
+            </button>
+            <input type="file"
+                   id="uploadVideoInput"
+                   accept="video/*"
+                   multiple
+                   style="display:none" />
+          </div>
+
+          <p class="small-text mt-1">
+            Uploaded videos stay on this device only (local browser memory). They are not sent
+            to a server.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT CARD -->
+    <section class="card mt-3">
+      <div class="card-header">
+        <div class="card-title">Need more help?</div>
+      </div>
+      <p class="small-text mt-1">
+        If you are unsure how to proceed, you can:
+      </p>
+      <ul class="small-text" style="padding-left: 1.25rem; margin-top: 0.5rem;">
+        <li>Speak to your facilitator, tutor, or project lead.</li>
+        <li>Ask your manager or HR contact if you are using Trading Places at work.</li>
+        <li>Review the Terms &amp; Conditions and Privacy Notice for more detail on how the system should be used.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer small-text">
+    © 2025 Trading Places™  
+    <a href="terms.html">Terms &amp; Conditions</a> |
+    <a href="privacy.html">Privacy Notice</a>
+  </footer>
+</div>
+
+<!-- PAGE-SPECIFIC SCRIPT -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const videoPlayer = document.getElementById("helpVideoPlayer");
+    const videoSource = document.getElementById("helpVideoSource");
+    const caption = document.getElementById("helpVideoCaption");
+
+    const uploadBtn = document.getElementById("uploadVideoBtn");
+    const uploadInput = document.getElementById("uploadVideoInput");
+    const userVideoList = document.getElementById("userVideoList");
+    const noUserVideos = document.getElementById("noUserVideos");
+
+    // Handle clicks on built-in placeholder tutorials
+    document.querySelectorAll("[data-video-placeholder]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const key = btn.getAttribute("data-video-placeholder");
+        // There is no real video file bundled; this explains what should go here.
+        videoSource.removeAttribute("src");
+        videoPlayer.load();
+        caption.textContent =
+          "This is a placeholder for a '" + btn.textContent.trim() +
+          "' video. When you have real recordings, upload them using the button on the right and select them to play.";
+        // Focus for screen readers
+        videoPlayer.focus();
+      });
+    });
+
+    // Trigger file chooser
+    if (uploadBtn && uploadInput) {
+      uploadBtn.addEventListener("click", function () {
+        uploadInput.click();
+      });
+
+      uploadInput.addEventListener("change", function () {
+        const files = Array.from(uploadInput.files || []);
+        if (!files.length) return;
+
+        if (noUserVideos) {
+          noUserVideos.remove();
+        }
+
+        files.forEach(function (file) {
+          const url = URL.createObjectURL(file);
+          const li = document.createElement("li");
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "sidebar-list-item btn-ghost";
+          btn.textContent = file.name;
+
+          btn.addEventListener("click", function () {
+            videoSource.src = url;
+            videoPlayer.load();
+            videoPlayer.play().catch(() => {
+              // Autoplay may be blocked; ignore errors.
+            });
+            caption.textContent = "Now playing: " + file.name;
+          });
+
+          li.appendChild(btn);
+          userVideoList.appendChild(li);
+        });
+
+        // Clear input so same file can be uploaded again if needed
+        uploadInput.value = "";
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

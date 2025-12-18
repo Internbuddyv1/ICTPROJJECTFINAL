@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Scenario Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="scenario-results">
+<a href="#main" class="skip-link" id="skip-to-content">Skip to content</a>
+
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo">TRADING PLACES</div>
+      <div class="top-bar-title">Training Results</div>
+    </div>
+    <div class="top-bar-right">
+      <a href="index.html" class="btn-small btn-ghost">Back to Dashboard</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-content">
+    <div class="results-layout">
+      <!-- Left: Result summary -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" id="res-title">Scenario</div>
+            <div class="card-subtitle">Your result and next steps</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-small btn-secondary" data-action="print-report">Export as PDF</button>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-block">
+            <div class="stat-label">Status</div>
+            <div class="stat-value" id="res-status">Completed</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label">Progress</div>
+            <div class="stat-value" id="res-pct">100%</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label">Duration</div>
+            <div class="stat-value" id="res-duration">—</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label">Perspectives</div>
+            <div class="stat-value" id="res-perspectives">—</div>
+          </div>
+        </div>
+
+        <div class="small-text mt-2">
+          Nice work. Your completion is saved to your local learning record. In a real deployment,
+          this would sync to your LMS/HRIS.
+        </div>
+
+        <div class="btn-row mt-2">
+          <a href="#" class="btn-small btn-secondary" data-action="review-choices">Review your choices</a>
+          <a href="#" class="btn-small btn-ghost" data-action="replay-scenario">Replay scenario</a>
+        </div>
+      </section>
+
+      <!-- Right: Reflection -->
+      <aside class="card">
+        <div class="card-header">
+          <div class="card-title">Reflection</div>
+        </div>
+        <div class="small-text">
+          What did you notice? Where might bias or power dynamics affect the outcome?
+          Write a short reflection to consolidate the learning.
+        </div>
+        <div class="mt-2">
+          <textarea id="reflectionText" aria-label="Reflection"></textarea>
+        </div>
+        <div class="btn-row mt-2">
+          <button class="btn-small btn-secondary" data-action="save-reflection">Save reflection</button>
+          <button class="btn-small btn-ghost" data-action="download-data">Download my data</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

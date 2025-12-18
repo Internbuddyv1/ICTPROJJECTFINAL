@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Scenario In Progress</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* a11y-only helper (doesn't affect your theme) */
+    .sr-only {
+      position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important;
+      overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important;
+    }
+    /* subtle focus ring without changing your visual style */
+    .focus-ring:focus { outline: 2px solid #1f4f9c; outline-offset: 2px; }
+    /* selected choice state (keeps your card look) */
+    .choice-list li.is-selected { box-shadow: 0 0 0 2px rgba(31,79,156,.35) inset; }
+    /* disabled primary button */
+    .btn[disabled], .btn[aria-disabled="true"] { opacity:.55; cursor:not-allowed; }
+  </style>
+</head>
+<body data-page="scenario-training">
+<a href="#main" class="sr-only" id="skip-to-content">Skip to content</a>
+
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo">TRADING PLACES</div>
+      <div class="top-bar-title">Scenario Progress: 40%</div>
+    </div>
+    <div class="top-bar-right">
+      <div class="progress-track" style="width: 180px;">
+        <div id="sc-header-progress" class="progress-fill" style="width: 40%;"></div>
+      </div>
+      <a href="index.html" class="btn-small btn-ghost" aria-label="Exit to dashboard">Exit</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-content" tabindex="-1">
+    <div class="scenario-layout">
+      <!-- Left: Scenario info -->
+      <section class="card">
+        <div class="scenario-section-title" id="sc-title">Loading…</div>
+        <div class="card-subtitle mt-1">
+          Experience multiple perspectives and notice how assumptions shape decisions.
+        </div>
+
+        <div class="stat-row mt-2">
+          <div class="stat-block">
+            <div class="stat-label">Duration</div>
+            <div class="stat-value" id="sc-duration">—</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label">Perspectives</div>
+            <div class="stat-value" id="sc-perspectives">—</div>
+          </div>
+        </div>
+
+        <div class="small-text mt-2">
+          You will switch roles during the scenario to see how the same moment lands differently.
+        </div>
+      </section>
+
+      <!-- Center: Narrative & choices -->
+      <section class="card">
+        <div class="scenario-section-title" id="scene-title">Current Scene</div>
+        <p class="scenario-paragraph mt-1">
+          You’re in a realistic workplace moment. Read the situation and pick how you’d respond.
+        </p>
+        <p class="scenario-paragraph">
+          Consider how your choice affects others in the room and what might be the most inclusive next step.
+        </p>
+
+        <div class="scenario-section-title mt-2" id="choice-group-label">How do you respond?</div>
+
+        <!-- Accessible radio-style list: click, enter/space, arrows -->
+        <ul class="choice-list"
+            id="choiceGroup"
+            role="radiogroup"
+            aria-labelledby="choice-group-label"
+            aria-describedby="choice-help">
+          <li role="radio" tabindex="0" aria-checked="false"
+              class="focus-ring"
+              data-choice-key="A">
+            A) Avoid addressing it right now and proceed as planned.
+          </li>
+          <li role="radio" tabindex="-1" aria-checked="false"
+              class="focus-ring"
+              data-choice-key="B">
+            B) Ask a clarifying question to surface assumptions respectfully.
+          </li>
+          <li role="radio" tabindex="-1" aria-checked="false"
+              class="focus-ring"
+              data-choice-key="C">
+            C) Name the behaviour and propose an inclusive alternative.
+          </li>
+        </ul>
+        <div id="choice-help" class="small-text mt-1">
+          Tip: Use ↑/↓ or ←/→ to move between options; press Enter or Space to select.
+        </div>
+
+        <div id="sc-status" class="small-text mt-2" aria-live="polite"></div>
+
+        <div class="btn-row mt-2">
+          <button class="btn-secondary btn-small" type="button" onclick="history.back()" aria-label="Go back">Back</button>
+          <!-- stays disabled until a choice is selected -->
+          <button id="confirmChoiceBtn"
+                  class="btn"
+                  type="button"
+                  data-action="complete-current-scenario"
+                  aria-disabled="true"
+                  disabled>
+            Confirm Choice &amp; Continue
+          </button>
+        </div>
+      </section>
+
+      <!-- Right: Perspective panel -->
+      <aside class="card">
+        <div class="scenario-section-title">Active Perspective</div>
+        <div class="small-text mt-1">
+          Imagine the scene from different roles (candidate, hiring manager, HR partner, client, etc.).
+        </div>
+
+        <ul class="sidebar-list mt-2">
+          <li><div class="sidebar-list-item"><strong>Perspective A</strong><br>Focuses on fairness and clarity.</div></li>
+          <li><div class="sidebar-list-item"><strong>Perspective B</strong><br>Worried about team norms and speed.</div></li>
+          <li><div class="sidebar-list-item"><strong>Perspective C</strong><br>Emphasises inclusion and outcomes.</div></li>
+        </ul>
+
+        <div class="btn-row mt-2">
+          <button class="btn-small btn-secondary" type="button">Switch Perspective (Prototype)</button>
+        </div>
+
+        <div class="small-text mt-3">
+          Notice how expectations and assumptions shape what feels “normal” during everyday work.
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

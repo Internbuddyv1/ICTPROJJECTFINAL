@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Manager Team Culture View</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="manager-dashboard">
+<a href="#main" class="skip-link" id="skip-to-content">Skip to content</a>
+
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo" onclick="window.location.href='index.html'">TRADING PLACES</div>
+      <div class="top-bar-title">Manager – Team Culture Training</div>
+    </div>
+    <div class="top-bar-right">
+      <span data-user-name>Alicia Patel (Manager)</span>
+      <div class="top-bar-divider"></div>
+      <a href="settings-privacy.html" class="text-link">Settings</a>
+      <a href="#" class="text-link" data-action="logout">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-content">
+    <section class="card" aria-labelledby="team-table-title">
+      <div class="card-header">
+        <div>
+          <div id="team-table-title" class="card-title">
+            Team Training Completion – Engineering
+          </div>
+          <div class="card-subtitle">
+            View progress and gently nudge your team to complete immersive culture scenarios.
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn-small btn-secondary" data-action="send-team-reminder">
+            Email team (mock)
+          </button>
+          <button type="button" class="btn-small btn-ghost" data-action="copy-professional-email">
+            Copy pro email
+          </button>
+        </div>
+      </div>
+
+      <div class="small-text" id="table-desc">
+        Three demo team members are shown below. Data and reminders are mock-only for this prototype.
+      </div>
+
+      <div class="mt-2" role="region" aria-labelledby="team-table-title" aria-describedby="table-desc">
+        <table role="table" aria-label="Team completion table" style="width:100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid rgba(148, 163, 184, 0.6);">
+                Employee
+              </th>
+              <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid rgba(148, 163, 184, 0.6);">
+                Completion
+              </th>
+              <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid rgba(148, 163, 184, 0.6);">
+                Status
+              </th>
+              <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid rgba(148, 163, 184, 0.6);">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody id="mgr-team-body" aria-live="polite"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer small-text">
+    © 2025 Trading Places™ – Culture Intelligence Prototype.
+    <a href="terms.html">Terms &amp; Conditions</a> ·
+    <a href="privacy.html">Privacy Notice</a>
+  </footer>
+</div>
+
+</body>
+</html>

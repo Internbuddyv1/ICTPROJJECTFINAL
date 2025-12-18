@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Create Individual Account</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="create-account-individual" class="login-page">
+<a href="#main" class="skip-link" id="skip-to-content">Skip to main content</a>
+
+<header class="top-bar">
+  <div class="top-bar-left">
+    <div class="logo">TRADING PLACES</div>
+    <div class="top-bar-title">Create Individual Account</div>
+  </div>
+</header>
+
+<main id="main" class="login-main">
+  <section class="login-hero" aria-labelledby="create-title">
+    <div class="login-hero-tag" aria-hidden="true">Set up</div>
+    <h1 id="create-title" class="login-hero-title">
+      Start your own Trading Places learning journey
+    </h1>
+    <p class="small-text">
+      Your account is stored locally in this browser. This is a learning environment and does
+      not connect to real HR systems.
+    </p>
+  </section>
+
+  <section class="login-panel">
+    <form id="soloCreateForm" class="login-form">
+      <h2>Create account</h2>
+      <div id="soloCreateMessage" class="small-text" aria-live="polite" style="min-height:1.25rem;"></div>
+
+      <div class="form-group">
+        <label for="soloName">Full name</label>
+        <input id="soloName" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="soloCreateEmail">Email</label>
+        <input id="soloCreateEmail" type="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="soloCreatePassword">Password</label>
+        <input id="soloCreatePassword" type="password" required />
+      </div>
+
+      <div class="login-actions mt-2">
+        <button type="submit" class="btn">Create account</button>
+      </div>
+
+      <div class="login-footer-links">
+        <span>Already have an account? <a href="login-individual.html">Log in</a></span>
+        <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer small-text">
+  © 2025 Trading Places™  
+  <a href="terms.html">Terms &amp; Conditions</a> |
+  <a href="privacy.html">Privacy Notice</a>
+</footer>
+
+</body>
+</html>

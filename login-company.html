@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Company Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="login-company" class="login-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="top-bar">
+  <div class="top-bar-left">
+    <div class="logo" onclick="window.location.href='onboarding.html'" style="cursor:pointer;">
+      TRADING PLACES
+    </div>
+  </div>
+</header>
+
+
+<main id="main" class="login-main">
+  <!-- LEFT: Description -->
+  <section class="login-hero" aria-labelledby="company-login-title">
+    <div class="login-hero-tag" aria-hidden="true">Organisation</div>
+    <h1 id="company-login-title" class="login-hero-title">
+      Sign in to your organisation’s Trading Places workspace
+    </h1>
+    <p class="small-text">
+      Use this login if you are part of a company team (employee, manager, or HR).
+      You’ll see role-based dashboards and culture insights.
+    </p>
+    <ul class="login-hero-points">
+      <li>Employees experience scenarios and track their learning.</li>
+      <li>Managers see team completion and empathy trends.</li>
+      <li>HR can view anonymised culture pulse metrics.</li>
+    </ul>
+  </section>
+
+  <!-- RIGHT: Login form -->
+  <section class="login-panel">
+    <div class="role-selector" role="tablist" aria-label="Choose role">
+      <div class="role-card active" data-role="employee" role="button" tabindex="0" aria-pressed="true">
+        <div class="role-card-title">Employee</div>
+        <div class="role-card-desc">Complete immersive scenarios</div>
+      </div>
+      <div class="role-card" data-role="manager" role="button" tabindex="0" aria-pressed="false">
+        <div class="role-card-title">Manager</div>
+        <div class="role-card-desc">View your team’s completion</div>
+      </div>
+      <div class="role-card" data-role="hr" role="button" tabindex="0" aria-pressed="false">
+        <div class="role-card-title">HR</div>
+        <div class="role-card-desc">See culture pulse trends</div>
+      </div>
+    </div>
+
+    <form id="companyLoginForm" class="login-form" aria-describedby="companyLoginMessage" novalidate>
+      <h2 id="companyLoginTitle">Employee login</h2>
+      <div id="companyLoginMessage" aria-live="polite" class="small-text" style="min-height:1.25rem;"></div>
+
+      <div class="form-group">
+        <label for="companyEmail">Work email</label>
+        <input id="companyEmail" type="email" autocomplete="username" required />
+      </div>
+
+      <div class="form-group">
+        <label for="companyPassword">Password</label>
+        <input id="companyPassword" type="password" autocomplete="current-password" required />
+      </div>
+
+      <div class="login-meta-row">
+        <label class="terms-checkbox">
+          <input id="companyAcceptTerms" type="checkbox" />
+          <span>I agree to the <a class="terms-link" href="terms.html" target="_blank">Terms &amp; Conditions</a></span>
+        </label>
+        <button type="button" class="text-link" data-action="forgot-password">Forgot password?</button>
+      </div>
+
+      <div class="login-actions">
+        <button type="submit" class="btn">Log in</button>
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="window.location.href='create-account-company.html'">
+          Create account
+        </button>
+      </div>
+
+      <p class="small-text mt-2" style="text-align:center;">
+        Struggling? <a href="help.html" class="text-link">Learn how Trading Places works</a>
+      </p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer small-text">
+  © 2025 Trading Places™
+  <a href="terms.html">Terms &amp; Conditions</a> |
+  <a href="privacy.html">Privacy Notice</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Organisation Culture Pulse (HR)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="hr-dashboard">
+<a href="#main" class="skip-link" id="skip-to-content">Skip to content</a>
+
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo" onclick="window.location.href='index.html'">TRADING PLACES</div>
+      <div class="top-bar-title">HR – Culture Pulse Overview</div>
+    </div>
+    <div class="top-bar-right">
+      <span data-user-name>Sara Ahmed (HR)</span>
+      <div class="top-bar-divider"></div>
+      <a href="settings-privacy.html" class="text-link">Settings</a>
+      <a href="#" class="text-link" data-action="logout">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-content">
+
+    <!-- ORG SNAPSHOT -->
+    <section class="card ci-hero-card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Organisation Culture Intelligence Snapshot</div>
+          <div class="card-subtitle">
+            Mock empathy, cohesion, bias awareness, and decision-making indicators across demo teams.
+          </div>
+        </div>
+      </div>
+
+      <div class="ci-kpi-grid">
+        <div class="ci-kpi"><div class="ci-kpi-label">Empathy index</div><div class="ci-kpi-value">69%</div></div>
+        <div class="ci-kpi"><div class="ci-kpi-label">Cohesion</div><div class="ci-kpi-value">71%</div></div>
+        <div class="ci-kpi"><div class="ci-kpi-label">Bias awareness</div><div class="ci-kpi-value">66%</div></div>
+        <div class="ci-kpi"><div class="ci-kpi-label">Decision-making</div><div class="ci-kpi-value">70%</div></div>
+      </div>
+    </section>
+
+    <!-- 2 COLUMN -->
+    <section class="grid-2 mt-3">
+
+      <!-- LEFT -->
+      <section>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Training Completion Overview</div></div>
+
+          <div class="stat-row">
+            <div class="stat-block">
+              <div class="stat-label">Enrolled</div>
+              <div class="stat-value" data-stat="enrolled">162</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-label">Completed</div>
+              <div class="stat-value" data-stat="completedAll">128</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-label">In Progress</div>
+              <div class="stat-value" data-stat="inProgress">24</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-label">Not Started</div>
+              <div class="stat-value" data-stat="notStarted">10</div>
+            </div>
+          </div>
+
+          <div class="progress-wrapper mt-2">
+            <div class="progress-label-row">
+              <span>Completion (organisation)</span>
+              <span data-stat="completionPctLabel">79%</span>
+            </div>
+            <div class="progress-track progress-thick">
+              <div class="progress-fill" data-stat="completionPctBar" style="width:79%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header"><div class="card-title">Priority Insights</div></div>
+          <ul class="sidebar-list">
+            <li><div class="sidebar-list-item">
+              Allyship behaviours need reinforcement in early onboarding.
+            </div></li>
+            <li><div class="sidebar-list-item">
+              Markets teams show lower empathy alignment than Operations.
+            </div></li>
+            <li><div class="sidebar-list-item">
+              Reflections suggest mixed psychological safety across teams.
+            </div></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Empathy Heatmap by Area</div></div>
+          <div class="heatmap-grid">
+            <div class="heatmap-cell heatmap-med"><div class="heatmap-label">Engineering</div><div>68%</div></div>
+            <div class="heatmap-cell heatmap-low"><div class="heatmap-label">Markets</div><div>61%</div></div>
+            <div class="heatmap-cell heatmap-high"><div class="heatmap-label">Operations</div><div>74%</div></div>
+            <div class="heatmap-cell heatmap-med"><div class="heatmap-label">Support</div><div>70%</div></div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header"><div class="card-title">Reports & Governance</div></div>
+          <p class="small-text">
+            These controls are mocks to demonstrate GDPR, Equality Act, and culture readiness reporting concepts.
+          </p>
+          <div class="btn-row">
+            <a href="culture-report.html" class="btn-small btn-secondary">Open Culture Readiness Report</a>
+            <button class="btn-small btn-ghost" data-action="api-placeholder">Sync to HRIS (Mock)</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+  </main>
+
+  <footer class="site-footer small-text">
+    © 2025 Trading Places™ – Culture Intelligence Prototype.
+    <a href="terms.html">Terms &amp; Conditions</a> ·
+    <a href="privacy.html">Privacy Notice</a>
+  </footer>
+</div>
+
+</body>
+</html>

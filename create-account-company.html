@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Company Account</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="create-account-company">
+  <header class="topbar">
+    <a class="logo" href="onboarding.html" aria-label="Trading Places home">TRADING PLACES</a>
+  </header>
+
+  <main class="auth-layout">
+    <section class="auth-panel">
+      <h1>Create account</h1>
+      <p id="companyCreateMessage" class="form-message" aria-live="polite"></p>
+
+      <form id="companyCreateForm" class="auth-form">
+        <label for="companyName">Company name</label>
+        <input id="companyName" name="companyName" type="text" placeholder="Your company" required />
+
+        <label for="companyRole">Account type</label>
+        <select id="companyRole" name="role" required>
+          <option value="employee">Employee</option>
+          <option value="manager">Manager</option>
+          <option value="hr">HR</option>
+        </select>
+
+        <label for="companyFullName">Full name</label>
+        <input id="companyFullName" name="fullName" type="text" placeholder="Your name" />
+
+        <label for="companyCreateEmail">Work email</label>
+        <input id="companyCreateEmail" name="email" type="email" placeholder="name@company.com" required />
+
+        <label for="companyCreatePassword">Password</label>
+        <input id="companyCreatePassword" name="password" type="password" placeholder="••••••••" required />
+
+        <button type="submit" class="btn-primary">Create account</button>
+
+        <p class="auth-footnote">
+          Already have an account?
+          <a href="login-company.html">Log in</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

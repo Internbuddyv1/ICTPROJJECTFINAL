@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Employee Culture Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="employee-dashboard">
+<a href="#main" class="skip-link" id="skip-to-content">Skip to content</a>
+
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo" onclick="window.location.href='index.html'">TRADING PLACES</div>
+      <div class="top-bar-title">My Culture Training</div>
+    </div>
+    <div class="top-bar-right">
+      <span data-user-name>John Doe</span>
+      <div class="top-bar-divider"></div>
+      <a href="settings-privacy.html" class="text-link">Settings</a>
+      <a href="#" class="text-link" data-action="logout">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-content">
+    <div class="grid-2">
+
+      <!-- LEFT: Progress + Scenarios -->
+      <section>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Current Training Progress</div>
+              <div id="emp-subtitle" class="card-subtitle">
+                You have completed <strong>0 of 4</strong> immersive scenarios.
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-wrapper">
+            <div class="progress-label-row">
+              <span>Total scenarios</span>
+              <span id="emp-pct-label">0% complete</span>
+            </div>
+            <div class="progress-track progress-thick">
+              <div id="emp-pct-bar" class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <a href="scenario-training.html?sid=recruitment" class="btn">
+              Resume Immersive Training
+            </a>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header">
+            <div class="card-title">Immersive Scenario Library</div>
+          </div>
+
+          <ul class="simple-list">
+            <li>
+              <div class="simple-list-item">
+                <div>
+                  <div class="simple-list-main">
+                    Recruitment Interview – Windrush Descendant Candidate
+                  </div>
+                  <div class="simple-list-meta">
+                    Experience hiring decisions from multiple perspectives<br/>
+                    Duration: 15 min · Perspectives: 3
+                  </div>
+                </div>
+                <div><span class="badge" data-scenario-badge="recruitment">Not started</span></div>
+                <div class="btn-row">
+                  <a href="scenario-training.html?sid=recruitment" class="btn-small btn-secondary">
+                    Launch VR-style View
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="simple-list-item">
+                <div>
+                  <div class="simple-list-main">First Day on the Trading Floor</div>
+                  <div class="simple-list-meta">
+                    Navigate subtle bias & microaggressions on day one<br/>
+                    Duration: 10 min · Perspectives: 2
+                  </div>
+                </div>
+                <div><span class="badge" data-scenario-badge="first-day">Not started</span></div>
+                <div class="btn-row">
+                  <a href="scenario-training.html?sid=first-day" class="btn-small btn-secondary">
+                    Launch Scenario
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="simple-list-item">
+                <div>
+                  <div class="simple-list-main">Performance Review Conversation</div>
+                  <div class="simple-list-meta">
+                    Explore feedback dynamics & power<br/>
+                    Duration: 12 min · Perspectives: 3
+                  </div>
+                </div>
+                <div><span class="badge" data-scenario-badge="performance-review">Not started</span></div>
+                <div class="btn-row">
+                  <a href="scenario-training.html?sid=performance-review" class="btn-small btn-secondary">
+                    Launch Scenario
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="simple-list-item">
+                <div>
+                  <div class="simple-list-main">Cross-Cultural Client Meeting</div>
+                  <div class="simple-list-meta">
+                    Practice inclusive collaboration in a global setting<br/>
+                    Duration: 10 min · Perspectives: 2
+                  </div>
+                </div>
+                <div><span class="badge" data-scenario-badge="cross-cultural">Not started</span></div>
+                <div class="btn-row">
+                  <a href="scenario-training.html?sid=cross-cultural" class="btn-small btn-secondary">
+                    Launch Scenario
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- RIGHT: Empathy + Activity -->
+      <aside>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">My Empathy Signal</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-block">
+              <div class="stat-label">Overall score</div>
+              <div class="stat-value">65%</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-label">Scenarios completed</div>
+              <div class="stat-value">
+                <span id="emp-completed">0</span> / 4
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 small-text">
+            This mock score reflects how consistently you notice bias, explore perspectives,
+            and choose inclusive actions. It is for learning only and is not HR data.
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header">
+            <div class="card-title">Recent Activity</div>
+          </div>
+          <ul class="sidebar-list">
+            <li>
+              <div class="sidebar-list-item">
+                Complete a scenario to see your recent cultural learning journey here.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer small-text">
+    © 2025 Trading Places™ – Culture Intelligence Prototype.
+    <a href="terms.html">Terms &amp; Conditions</a> ·
+    <a href="privacy.html">Privacy Notice</a>
+  </footer>
+</div>
+
+</body>
+</html>

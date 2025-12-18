@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Personal Culture Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="individual-dashboard">
+<a href="#main" class="skip-link" id="skip-to-content">Skip to content</a>
+
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo" onclick="window.location.href='individual-dashboard.html'">
+        TRADING PLACES
+      </div>
+      <div class="top-bar-title">My Personal Culture Studio</div>
+    </div>
+    <div class="top-bar-right">
+      <span data-user-name>Guest Learner</span>
+      <div class="top-bar-divider"></div>
+      <a href="settings-privacy.html" class="text-link">Settings</a>
+      <a href="login-individual.html" class="text-link">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-content">
+    <div class="grid-2">
+
+      <!-- LEFT: Core training -->
+      <section>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Your Culture Learning Journey</div>
+              <div class="card-subtitle">
+                Track progress through immersive, self-directed scenarios.
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-wrapper">
+            <div class="progress-label-row">
+              <span>Core scenarios completed</span>
+              <span>0% complete (mock)</span>
+            </div>
+            <div class="progress-track progress-thick">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <a href="scenario-training.html?sid=recruitment" class="btn">
+              Start First Immersive Scenario
+            </a>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header">
+            <div class="card-title">Add More Training for Yourself</div>
+          </div>
+          <p class="small-text">
+            Use this space to design your own culture prompts and personal practice sessions.
+            These are stored locally and are just for you.
+          </p>
+
+          <form class="mt-2">
+            <div class="form-group">
+              <label for="customTrainingTitle">New learning focus</label>
+              <input id="customTrainingTitle" type="text" placeholder="e.g. Speaking up in meetings" />
+            </div>
+            <div class="form-group mt-1">
+              <label for="customTrainingNotes">What do you want to practice?</label>
+              <textarea id="customTrainingNotes" placeholder="Write a short description of the situation you want to rehearse."></textarea>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn-small btn-secondary">
+                Add to my practice list (mock)
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- RIGHT: Reflection -->
+      <aside>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Reflection Space</div>
+          </div>
+          <p class="small-text">
+            Use this area to note what you are learning about yourself, your reactions, and your
+            assumptions. Nothing here is shared or transmitted – it is only on your device.
+          </p>
+          <div class="mt-2">
+            <textarea placeholder="What did you notice about your reactions today?"></textarea>
+          </div>
+          <div class="footer-actions">
+            <button type="button" class="btn-small btn-secondary">
+              Save reflection locally (mock)
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer small-text">
+    © 2025 Trading Places™ – Personal Culture Studio (mock only).
+    <a href="terms.html">Terms &amp; Conditions</a> ·
+    <a href="privacy.html">Privacy Notice</a>
+  </footer>
+</div>
+
+</body>
+</html>

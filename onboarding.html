@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="onboarding" class="login-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="top-bar">
+  <div class="top-bar-left">
+    <div class="logo">TRADING PLACES</div>
+  </div>
+</header>
+
+<main id="main" class="login-main fade-in">
+  <!-- LEFT PANEL: HERO -->
+  <section class="login-hero" aria-labelledby="onboard-title">
+    <div class="login-hero-tag" aria-hidden="true">Welcome</div>
+    <h1 id="onboard-title" class="login-hero-title">
+      Cultural-awareness learning through immersive simulation and reflection
+    </h1>
+    <p class="small-text">
+      Step into realistic workplace moments, explore different perspectives, and
+      reflect on how your choices can shape culture, inclusion, and empathy.
+    </p>
+
+    <ul class="login-hero-points">
+      <li>Switch roles in scenario “rooms” that feel like VR spaces.</li>
+      <li>Practice handling bias, power, and sensitive situations safely.</li>
+      <li>Learn at your own pace – no real HR decisions are made here.</li>
+    </ul>
+
+    <div class="onboard-pulse-card mt-2">
+      <div class="onboard-pulse-title">How it works</div>
+      <div class="small-text">
+        1) Choose how you’re using Trading Places.<br />
+        2) Pick a scenario space from your dashboard.<br />
+        3) Move through scenes, make choices, and reflect.
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT PANEL: ACCESSIBILITY + ACCOUNT MODE -->
+  <section class="login-panel slide-up">
+    <form id="onboardingForm" class="login-form">
+      <h2>Accessibility &amp; how you’re using Trading Places</h2>
+      <p class="small-text">
+        Choose any options that support a more comfortable and inclusive experience.
+        Settings are stored locally on this device and can be changed later.
+      </p>
+
+      <!-- Accessibility -->
+      <div class="form-row mt-2">
+        <div class="form-label">Accessibility options</div>
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="prefHighContrast"> High-contrast visuals</label>
+          <label><input type="checkbox" id="prefDyslexia"> Dyslexia-friendly layout</label>
+          <label><input type="checkbox" id="prefKeyboard"> Keyboard-first navigation</label>
+        </div>
+      </div>
+
+      <!-- Sensitive content -->
+      <div class="form-row mt-1">
+        <div>
+          <div class="form-label">Sensitive or emotional themes</div>
+          <p class="small-text">
+            Scenarios may involve topics such as bias, discrimination, or exclusion.
+            You can pause or exit at any time if you feel uncomfortable.
+          </p>
+        </div>
+      </div>
+
+      <!-- Account mode -->
+      <div class="form-row mt-2">
+        <div class="form-label">How are you using Trading Places?</div>
+        <div class="checkbox-group">
+          <label>
+            <input type="radio" name="accountMode" value="company" checked>
+            I’m joining a company team (organisation login)
+          </label>
+          <label>
+            <input type="radio" name="accountMode" value="individual">
+            I’m using Trading Places individually (personal learning)
+          </label>
+        </div>
+      </div>
+
+      <div class="login-actions mt-2">
+        <button type="submit" class="btn">Continue</button>
+      </div>
+
+      <p class="small-text mt-1">
+        By continuing, you confirm that you understand Trading Places is a cultural-awareness
+        learning environment using mock data, not a live HR or performance system.
+      </p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer small-text">
+  © 2025 Trading Places™
+  <a href="terms.html">Terms &amp; Conditions</a> |
+  <a href="privacy.html">Privacy Notice</a>
+</footer>
+
+</body>
+</html>

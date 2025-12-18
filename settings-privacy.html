@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trading Places – Settings & Privacy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="settings-privacy">
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo">TRADING PLACES</div>
+      <div class="top-bar-title">Settings &amp; Privacy</div>
+    </div>
+    <div class="top-bar-right">
+      <span data-user-name>John Doe</span>
+      <div class="top-bar-divider"></div>
+      <a href="index.html" class="text-link">Back to Dashboard</a>
+      <a href="#" class="text-link" data-action="logout">Log out</a>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <!-- Notification & training settings -->
+    <section class="form-section">
+      <div class="card-title">Training &amp; Notifications</div>
+
+      <div class="form-row mt-2">
+        <div>
+          <div class="form-label">Reminder emails</div>
+          <div class="form-help">
+            Get a reminder when new mandatory scenarios are assigned.
+          </div>
+        </div>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" checked>
+            Enable reminder emails
+          </label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <div class="form-label">Weekly progress summary</div>
+          <div class="form-help">
+            Receive a brief summary of completed scenarios and your empathy score.
+          </div>
+        </div>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox">
+            Send weekly summary
+          </label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <div class="form-label">Language</div>
+          <div class="form-help">Choose your preferred interface language.</div>
+        </div>
+        <div>
+          <select>
+            <option>English (UK)</option>
+            <option>English (US)</option>
+            <option>French</option>
+            <option>German</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data & privacy -->
+    <section class="form-section mt-3">
+      <div class="card-title">Privacy &amp; Data Use</div>
+
+      <div class="form-row mt-2">
+        <div>
+          <div class="form-label">Training data usage</div>
+          <div class="form-help">
+            Your scenario choices are used to calculate your empathy score and
+            to generate anonymised team-level analytics for HR.
+          </div>
+        </div>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" checked>
+            I consent to my training data being used for anonymised analytics
+          </label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <div class="form-label">Data retention</div>
+          <div class="form-help">
+            Anonymised aggregate data (without personal identifiers) may be
+            retained for analytics. Some data may be retained for legal
+            compliance (audit logs, consent records).
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-actions">
+        <button class="btn-small btn-secondary" data-action="download-data">
+          Download my data
+        </button>
+        <button class="btn-small btn-secondary" data-action="request-correction">
+          Request data correction
+        </button>
+        <button class="btn-small btn-secondary" data-action="request-deletion">
+          Request data deletion
+        </button>
+      </div>
+    </section>
+
+    <!-- Legal rights section -->
+    <section class="form-section mt-3">
+      <div class="card-title">Your Rights</div>
+
+      <div class="small-text mt-2">
+        Under applicable data protection law (for example GDPR), you have the
+        right to access, rectify, erase, restrict processing, and object to
+        certain uses of your personal data.
+      </div>
+
+      <div class="small-text mt-2">
+        If you have questions or concerns, contact our Data Protection Officer:<br>
+        <strong>dpo@tradingplaces.com</strong>
+      </div>
+
+      <div class="small-text mt-2">
+        You can also review our full
+        <span class="text-link">Privacy Policy</span> and
+        <span class="text-link">Terms of Service</span>.
+      </div>
+
+      <div class="footer-actions mt-3">
+        <button class="btn" data-action="save-settings">Save changes</button>
+        <button class="btn-secondary" data-action="cancel-settings">Cancel</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

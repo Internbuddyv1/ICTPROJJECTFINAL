@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trading Places – Individual Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body data-page="login-individual" class="login-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo" onclick="window.location.href='onboarding.html'" style="cursor:pointer;">
+        TRADING PLACES
+      </div>
+    </div>
+  </header>
+  
+
+<main id="main" class="login-main">
+  <!-- LEFT: Description -->
+  <section class="login-hero" aria-labelledby="individual-login-title">
+    <div class="login-hero-tag" aria-hidden="true">Individual</div>
+    <h1 id="individual-login-title" class="login-hero-title">
+      Sign in to your personal Trading Places space
+    </h1>
+    <p class="small-text">
+      Use this login if you’re using Trading Places on your own for personal and
+      professional development, not as part of an organisation rollout.
+    </p>
+    <ul class="login-hero-points">
+      <li>Enter VR-style training spaces with cultural scenarios.</li>
+      <li>Track your own progress and reflections privately.</li>
+      <li>Add extra learning scenarios that matter to you.</li>
+    </ul>
+  </section>
+
+  <!-- RIGHT: Login form -->
+  <section class="login-panel">
+    <form id="individualLoginForm" class="login-form" aria-describedby="individualLoginMessage" novalidate>
+      <h2>Individual login</h2>
+      <div id="individualLoginMessage" aria-live="polite" class="small-text" style="min-height:1.25rem;"></div>
+
+      <div class="form-group">
+        <label for="individualEmail">Email</label>
+        <input id="individualEmail" type="email" autocomplete="username" required />
+      </div>
+
+      <div class="form-group">
+        <label for="individualPassword">Password</label>
+        <input id="individualPassword" type="password" autocomplete="current-password" required />
+      </div>
+
+      <div class="login-meta-row">
+        <label class="terms-checkbox">
+          <input id="individualAcceptTerms" type="checkbox" />
+          <span>I agree to the <a class="terms-link" href="terms.html" target="_blank">Terms &amp; Conditions</a></span>
+        </label>
+        <button type="button" class="text-link" data-action="forgot-password">Forgot password?</button>
+      </div>
+
+      <div class="login-actions">
+        <button type="submit" class="btn">Log in</button>
+        <button type="button" class="btn-secondary" data-action="create-account">Create account</button>
+      </div>
+
+      <p class="small-text mt-2" style="text-align:center;">
+        Struggling? <a href="help.html" class="text-link">Learn how Trading Places works</a>
+      </p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer small-text">
+  © 2025 Trading Places™
+  <a href="terms.html">Terms &amp; Conditions</a> |
+  <a href="privacy.html">Privacy Notice</a>
+</footer>
+
+</body>
+</html>

@@ -1,254 +1,179 @@
 /* ============================================
-   GLOBAL CONFIG (FIXES 405 PERMANENTLY)
+   BACKEND CONFIG (FIXED)
    ============================================ */
 
-// 🔴 HARD-CODED BACKEND URL (PUBLIC RAILWAY DOMAIN)
+// ✅ PUBLIC Railway backend URL
 const API_BASE = "https://ictprojjectfinal-production.up.railway.app";
 
 /* ============================================
-   SESSION & NAVIGATION
+   SESSION, ROLES, PROGRESS & NAVIGATION LOGIC
    ============================================ */
 
-function setSession(user) {
-  localStorage.setItem("tp_user", JSON.stringify(user));
-}
+const ORG_USERS = [
+  { id:"u_emp_001", email:"employee@demo.com", name:"John Doe", role:"employee", managerId:"u_mgr_001" },
+  { id:"u_mgr_001", email:"manager@demo.com", name:"Alicia Patel", role:"manager" },
+  { id:"u_hr_001",  email:"hr@demo.com", name:"Sara Ahmed", role:"hr" },
+  { id:"u_ind_001", email:"learner@demo.com", name:"Alex Jordan", role:"individual" }
+];
 
-function getSession() {
-  try {
-    return JSON.parse(localStorage.getItem("tp_user"));
-  } catch {
-    return null;
-  }
-}
-
-function clearSession() {
-  localStorage.removeItem("tp_user");
-}
+const SCENARIOS = [
+  { id:"recruitment", title:"Recruitment Interview", durationMins:15, perspectives:3 },
+  { id:"first-day", title:"First Day", durationMins:10, perspectives:2 },
+  { id:"cross-cultural", title:"Cross Cultural", durationMins:10, perspectives:2 }
+];
 
 const ROLE_ROUTES = {
   employee: "index.html",
   manager: "manager-dashboard.html",
   hr: "hr-dashboard.html",
-  individual: "dashboard-individual.html",
+  individual: "dashboard-individual.html"
 };
 
-/* ============================================
-   API HELPERS
-   ============================================ */
+/* ========== SESSION HELPERS ========== */
+function setSession(user){ localStorage.setItem("tp_user", JSON.stringify(user)); }
+function getSession(){ try { return JSON.parse(localStorage.getItem("tp_user")); } catch { return null; } }
+function clearSession(){ localStorage.removeItem("tp_user"); }
 
-async function apiRequest(path, { method = "GET", body } = {}) {
+/* ========== API HELPERS (FIXED) ========== */
+async function apiRequest(path, { method="GET", body=null } = {}){
   const res = await fetch(`${API_BASE}${path}`, {
     method,
     headers: body ? { "Content-Type": "application/json" } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
+    body: body ? JSON.stringify(body) : undefined
   });
 
-  let data;
-  try {
-    data = await res.json();
-  } catch {
-    data = null;
-  }
+  let data = null;
+  try { data = await res.json(); } catch {}
 
-  if (!res.ok) {
+  if(!res.ok){
     throw new Error(data?.error || `Request failed (${res.status})`);
   }
-
   return data;
 }
 
-function apiRegister(payload) {
-  return apiRequest("/api/register", { method: "POST", body: payload });
-}
+const apiLogin = (p) => apiRequest("/api/login", { method:"POST", body:p });
+const apiRegister = (p) => apiRequest("/api/register", { method:"POST", body:p });
 
-function apiLogin(payload) {
-  return apiRequest("/api/login", { method: "POST", body: payload });
-}
-
-/* ============================================
-   CREATE ACCOUNT – INDIVIDUAL
-   ============================================ */
-
-function initCreateAccountIndividualPage() {
+/* ========== CREATE ACCOUNT (INDIVIDUAL) ========== */
+function initCreateAccountIndividualPage(){
   const form = document.getElementById("soloCreateForm");
   const msg = document.getElementById("soloCreateMessage");
-  if (!form) return;
+  if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    const fullName = document.getElementById("soloName").value.trim();
-    const email = document.getElementById("soloCreateEmail").value.trim();
-    const password = document.getElementById("soloCreatePassword").value;
-
     try {
-      await apiRegister({
-        email,
-        password,
-        fullName,
-        role: "individual",
-      });
+      const fullName = document.getElementById("soloName").value.trim();
+      const email = document.getElementById("soloCreateEmail").value.trim();
+      const password = document.getElementById("soloCreatePassword").value;
 
-      const account = await apiLogin({
-        email,
-        password,
-        role: "individual",
-      });
+      await apiRegister({ email, password, fullName, role:"individual" });
+      const user = await apiLogin({ email, password, role:"individual" });
+      setSession(user);
 
-      setSession(account);
       msg.style.color = "green";
       msg.textContent = "Account created. Redirecting…";
-
-      setTimeout(() => {
-        window.location.href = ROLE_ROUTES.individual;
-      }, 300);
-    } catch (err) {
+      setTimeout(() => location.href = ROLE_ROUTES.individual, 300);
+    } catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ============================================
-   CREATE ACCOUNT – COMPANY
-   ============================================ */
-
-function initCreateAccountCompanyPage() {
+/* ========== CREATE ACCOUNT (COMPANY) ========== */
+function initCreateAccountCompanyPage(){
   const form = document.getElementById("companyCreateForm");
   const msg = document.getElementById("companyCreateMessage");
-  if (!form) return;
+  if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    const fullName = document.getElementById("companyFullName").value.trim();
-    const email = document.getElementById("companyCreateEmail").value.trim();
-    const password = document.getElementById("companyCreatePassword").value;
-    const role = document.getElementById("companyRole").value;
-
     try {
-      await apiRegister({
-        email,
-        password,
-        fullName,
-        role,
-      });
+      const fullName = document.getElementById("companyFullName").value.trim();
+      const email = document.getElementById("companyCreateEmail").value.trim();
+      const password = document.getElementById("companyCreatePassword").value;
+      const role = document.getElementById("companyRole").value;
 
-      const account = await apiLogin({ email, password, role });
-      setSession(account);
+      await apiRegister({ email, password, fullName, role });
+      const user = await apiLogin({ email, password, role });
+      setSession(user);
 
       msg.style.color = "green";
       msg.textContent = "Account created. Redirecting…";
-
-      setTimeout(() => {
-        window.location.href = ROLE_ROUTES[account.role];
-      }, 300);
-    } catch (err) {
+      setTimeout(() => location.href = ROLE_ROUTES[user.role], 300);
+    } catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ============================================
-   LOGIN – COMPANY
-   ============================================ */
-
-function initCompanyLoginPage() {
+/* ========== LOGIN (COMPANY) ========== */
+function initCompanyLoginPage(){
   const form = document.getElementById("companyLoginForm");
   const msg = document.getElementById("companyLoginMessage");
-  if (!form) return;
+  if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    const email = document.getElementById("companyEmail").value.trim();
-    const password = document.getElementById("companyPassword").value;
-    const role =
-      document.querySelector(".role-card.active")?.dataset.role || "employee";
-
     try {
-      const account = await apiLogin({ email, password, role });
-      setSession(account);
+      const email = document.getElementById("companyEmail").value.trim();
+      const password = document.getElementById("companyPassword").value;
+      const role = document.querySelector(".role-card.active")?.dataset.role || "employee";
+
+      const user = await apiLogin({ email, password, role });
+      setSession(user);
 
       msg.style.color = "green";
       msg.textContent = "Login successful. Redirecting…";
-
-      setTimeout(() => {
-        window.location.href = ROLE_ROUTES[account.role];
-      }, 300);
-    } catch (err) {
+      setTimeout(() => location.href = ROLE_ROUTES[user.role], 300);
+    } catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ============================================
-   LOGIN – INDIVIDUAL
-   ============================================ */
-
-function initIndividualLoginPage() {
+/* ========== LOGIN (INDIVIDUAL) ========== */
+function initIndividualLoginPage(){
   const form = document.getElementById("individualLoginForm");
   const msg = document.getElementById("individualLoginMessage");
-  if (!form) return;
+  if(!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
 
-    const email = document.getElementById("individualEmail").value.trim();
-    const password = document.getElementById("individualPassword").value;
-
     try {
-      const account = await apiLogin({
-        email,
-        password,
-        role: "individual",
-      });
+      const email = document.getElementById("individualEmail").value.trim();
+      const password = document.getElementById("individualPassword").value;
 
-      setSession(account);
+      const user = await apiLogin({ email, password, role:"individual" });
+      setSession(user);
+
       msg.style.color = "green";
       msg.textContent = "Login successful. Redirecting…";
-
-      setTimeout(() => {
-        window.location.href = ROLE_ROUTES.individual;
-      }, 300);
-    } catch (err) {
+      setTimeout(() => location.href = ROLE_ROUTES.individual, 300);
+    } catch(err){
       msg.style.color = "red";
       msg.textContent = err.message;
     }
   });
 }
 
-/* ============================================
-   ROUTER
-   ============================================ */
-
+/* ========== ROUTER ========== */
 document.addEventListener("DOMContentLoaded", () => {
-  const page = document.body.dataset.page;
-
-  switch (page) {
-    case "create-account-individual":
-      initCreateAccountIndividualPage();
-      break;
-
-    case "create-account-company":
-      initCreateAccountCompanyPage();
-      break;
-
-    case "login-company":
-      initCompanyLoginPage();
-      break;
-
-    case "login-individual":
-      initIndividualLoginPage();
-      break;
-
-    default:
-      break;
+  switch(document.body.dataset.page){
+    case "create-account-individual": initCreateAccountIndividualPage(); break;
+    case "create-account-company": initCreateAccountCompanyPage(); break;
+    case "login-company": initCompanyLoginPage(); break;
+    case "login-individual": initIndividualLoginPage(); break;
   }
 });
